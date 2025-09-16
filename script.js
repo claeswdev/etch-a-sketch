@@ -22,10 +22,19 @@ function setGrid(num) {
         const squareSize = container.clientWidth / num;
         square.style.cssText = `width: ${squareSize}px; height: ${squareSize}px`;
         square.classList.toggle("thin-dark-border");
-        square.addEventListener("mouseenter", 
-            () => square.classList.toggle("hover"));
+        square.addEventListener("mouseenter", () => {
+            square.style.backgroundColor = getRandomColor();
+        });
         container.appendChild(square);
     }
+}
+
+function getRandomColor() {
+    const randomRed = Math.floor(Math.random() * 256);
+    const randomGreen = Math.floor(Math.random() * 256);
+    const randomBlue = Math.floor(Math.random() * 256);
+
+    return `rgb(${randomRed}, ${randomGreen}, ${randomBlue})`;
 }
 
 setGrid(16);
